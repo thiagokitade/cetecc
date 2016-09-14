@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class SysCetecc2Application {
+public class CeteccApplication {
 	
 	@RequestMapping("/user")
 	public Principal user(Principal user) {
@@ -35,7 +35,7 @@ public class SysCetecc2Application {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SysCetecc2Application.class, args);
+		SpringApplication.run(CeteccApplication.class, args);
 	}
 	
 
