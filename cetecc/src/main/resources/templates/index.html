@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="ISO-8859-1"/>
+<script type="text/javascript"  src="../static/js/libs/angular.js" th:src="@{js/libs/angular.js}">  </script>
+<script type="text/javascript"  src="../static/js/libs/angular-route.js" th:src="@{js/libs/angular-route.js}"> " </script>
+<script type="text/javascript"  src="../static/js/cetecc.module.js" th:src="@{js/cetecc.module.js}"> </script> 
+<script type="text/javascript"  src="../static/js/auth/auth.js" th:src="@{js/auth/auth.js}"> </script>
+<script type="text/javascript"  src="../static/js/home/home.js" th:src="@{js/home/home.js}"> </script>
+<script type="text/javascript"  src="../static/js/navigation/navigation.js" th:src="@{js/navigation/navigation.js}"> </script>
+
+<title>Index Page</title>
+<base href="/" />
+</head>
+<body ng-app="cetecc">
+
+<div ng-controller="navigation as nav">
+		<ul>
+			<li ng-show="nav.authenticated()"><a href="" ng-click="nav.logout()">logout</a></li>
+		</ul>
+	</div>
+	
+	<ng-view></ng-view>
+
+        
+        
+  
+      
+
+</body>
+</html>
