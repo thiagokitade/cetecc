@@ -27,12 +27,7 @@ public class Curso implements Serializable {
 	private String nome;
 
 	//bi-directional many-to-many association to Disciplina
-	@ManyToMany(mappedBy="cursos")
-	private List<Disciplina> disciplinas;
-
-	//bi-directional many-to-one association to Turma
-	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 		name="curso_tem_disciplina"
 		, joinColumns={
@@ -42,6 +37,11 @@ public class Curso implements Serializable {
 			@JoinColumn(name="id_disciplina")
 			}
 		)
+	private List<Disciplina> disciplinas;
+
+	//bi-directional many-to-one association to Turma
+	
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="curso")
 	private List<Turma> turmas;
 
 	public Curso() {
