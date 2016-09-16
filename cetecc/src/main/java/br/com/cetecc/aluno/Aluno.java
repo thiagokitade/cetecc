@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 
 import br.com.cetecc.dadosPessoais.DadosPessoais;
 //comentario
+import br.com.cetecc.turma.Turma;
 
 @Entity
 public class Aluno implements Serializable {
@@ -74,6 +75,18 @@ public class Aluno implements Serializable {
 			}
 		)
 	private List<Responsavel> responsaveis;
+	
+	@ManyToMany
+	@JoinTable(
+		name="aluno_tem_turma"
+		, joinColumns={
+			@JoinColumn(name="id_aluno")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="id_turma", referencedColumnName="id_turma")
+			}
+		)
+	private List<Turma> turmas;
 
 	public Aluno() {
 	}
