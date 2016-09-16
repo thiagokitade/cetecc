@@ -1,7 +1,9 @@
-package br.com.cetecc.curso;
+package br.com.cetecc.disciplina;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import br.com.cetecc.curso.Curso;
 
 import java.util.List;
 

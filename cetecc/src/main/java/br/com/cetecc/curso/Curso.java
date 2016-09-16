@@ -3,6 +3,7 @@ package br.com.cetecc.curso;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import br.com.cetecc.disciplina.Disciplina;
 import br.com.cetecc.turma.Turma;
 
 import java.util.List;
