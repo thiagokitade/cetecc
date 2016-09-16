@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -57,14 +57,14 @@ public class DadosPessoais implements Serializable {
 	private String uf;
 
 	// bi-directional many-to-one association to Aluno
-	@OneToMany(mappedBy = "dadosPessoais")
-	private List<Aluno> alunos;
+	@OneToOne(mappedBy = "dadosPessoais")
+	private Aluno aluno;
 
-	@OneToMany(mappedBy = "dadosPessoais")
-	private List<Funcionario> funcionarios;
+	@OneToOne(mappedBy = "dadosPessoais")
+	private Funcionario funcionario;
 
-	@OneToMany(mappedBy = "dadosPessoais")
-	private List<Responsavel> responsaveis;
+	@OneToOne(mappedBy = "dadosPessoais")
+	private Responsavel responsavel;
 
 	// bi-directional many-to-one association to Endereco
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -76,12 +76,12 @@ public class DadosPessoais implements Serializable {
 	private Telefone telefone;
 
 	@JsonIgnore
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
+	public void setFuncionarios(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	public Telefone getTelefone() {
@@ -169,29 +169,15 @@ public class DadosPessoais implements Serializable {
 
 	@JsonIgnore
 	// @JsonManagedReference("dadosPessoais-aluno")
-	public List<Aluno> getAlunos() {
-		return this.alunos;
+	public Aluno getAlunos() {
+		return this.aluno;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
-	public Aluno addAluno(Aluno aluno) {
-		getAlunos().add(aluno);
-		aluno.setDadosPessoais(this);
 
-		return aluno;
-	}
-
-	public Aluno removeAluno(Aluno aluno) {
-		getAlunos().remove(aluno);
-		aluno.setDadosPessoais(null);
-
-		return aluno;
-	}
-
-	// @JsonBackReference("endereco-dadosPessoais")
 	public Endereco getEndereco() {
 		return this.endereco;
 	}
@@ -201,12 +187,12 @@ public class DadosPessoais implements Serializable {
 	}
 
 	@JsonIgnore
-	public List<Responsavel> getResponsaveis() {
-		return responsaveis;
+	public Responsavel getResponsavel() {
+		return responsavel;
 	}
 
-	public void setResponsaveis(List<Responsavel> responsaveis) {
-		this.responsaveis = responsaveis;
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
 	}
 
 }

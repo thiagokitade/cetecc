@@ -1,9 +1,11 @@
 package br.com.cetecc.aluno;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,8 +32,8 @@ public class Escolaridade implements Serializable {
 	private String txtObservacao;
 
 	// bi-directional many-to-one association to Aluno
-	@OneToMany(mappedBy = "escolaridade")
-	private List<Aluno> alunos;
+	@OneToOne(mappedBy = "escolaridade")
+	private Aluno aluno;
 
 	public Escolaridade() {
 	}
@@ -44,12 +46,12 @@ public class Escolaridade implements Serializable {
 		this.idEscolaridade = idEscolaridade;
 	}
 	@JsonIgnore
-	public List<Aluno> getAlunos() {
-		return alunos;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 	public String getDsEscolaridade() {

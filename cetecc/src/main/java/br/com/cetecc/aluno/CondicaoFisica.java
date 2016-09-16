@@ -34,8 +34,8 @@ public class CondicaoFisica implements Serializable {
 	private String problemaSaude;
 
 	// bi-directional many-to-one association to Aluno
-	@OneToMany(mappedBy = "condicaoFisica")
-	private List<Aluno> alunos;
+	@OneToOne(mappedBy = "condicaoFisica")
+	private Aluno aluno;
 
 	public CondicaoFisica() {
 	}
@@ -89,26 +89,11 @@ public class CondicaoFisica implements Serializable {
 	}
 
 	@JsonIgnore
-	public List<Aluno> getAlunos() {
-		return this.alunos;
+	public Aluno getAluno() {
+		return this.aluno;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
-
-	public Aluno addAluno(Aluno aluno) {
-		getAlunos().add(aluno);
-		aluno.setCondicaoFisica(this);
-
-		return aluno;
-	}
-
-	public Aluno removeAluno(Aluno aluno) {
-		getAlunos().remove(aluno);
-		aluno.setCondicaoFisica(null);
-
-		return aluno;
-	}
-
 }

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import br.com.cetecc.dadosPessoais.DadosPessoais;
 //comentario
@@ -46,20 +47,20 @@ public class Aluno implements Serializable {
 	private String problemasFamilia;
 
 	//bi-directional many-to-one association to DadosPessoais
-	@ManyToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_dados_pessoais")
 	private DadosPessoais dadosPessoais;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_condicao_fisica")
 	private CondicaoFisica condicaoFisica;
 
 	//bi-directional many-to-one association to Socioeconomico
-	@ManyToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_socioeconomico")
 	private Socioeconomico socioeconomico;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_escolaridade")
 	private Escolaridade escolaridade;
 	

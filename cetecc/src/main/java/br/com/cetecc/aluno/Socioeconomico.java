@@ -1,10 +1,15 @@
 package br.com.cetecc.aluno;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
 
 /**
  * The persistent class for the socioeconomico database table.
@@ -51,8 +56,8 @@ public class Socioeconomico implements Serializable {
 	private String tipoConstrucao;
 
 	// bi-directional many-to-one association to Aluno
-	@OneToMany(mappedBy = "socioeconomico")
-	private List<Aluno> alunos;
+	@OneToOne(mappedBy = "socioeconomico")
+	private Aluno aluno;
 
 	public Socioeconomico() {
 	}
@@ -154,26 +159,13 @@ public class Socioeconomico implements Serializable {
 	}
 	
 	@JsonIgnore
-	public List<Aluno> getAlunos() {
-		return this.alunos;
+	public Aluno getAluno() {
+		return this.aluno;
 	}
 
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
-	public Aluno addAluno(Aluno aluno) {
-		getAlunos().add(aluno);
-		aluno.setSocioeconomico(this);
-
-		return aluno;
-	}
-
-	public Aluno removeAluno(Aluno aluno) {
-		getAlunos().remove(aluno);
-		aluno.setSocioeconomico(null);
-
-		return aluno;
-	}
 
 }
