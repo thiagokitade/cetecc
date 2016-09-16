@@ -3,7 +3,6 @@ package br.com.cetecc.dadosPessoais;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
