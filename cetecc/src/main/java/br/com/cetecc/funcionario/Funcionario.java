@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import br.com.cetecc.dadosPessoais.DadosPessoais;
 
@@ -36,7 +36,7 @@ public class Funcionario implements Serializable {
 	private byte voluntario;
 
 	// bi-directional many-to-one association to DadosPessoais
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_dados_pessoais")
 	private DadosPessoais dadosPessoais;
 

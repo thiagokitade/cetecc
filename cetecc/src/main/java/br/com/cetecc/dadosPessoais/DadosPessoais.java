@@ -80,7 +80,7 @@ public class DadosPessoais implements Serializable {
 		return funcionario;
 	}
 
-	public void setFuncionarios(Funcionario funcionario) {
+	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
 
