@@ -46,7 +46,7 @@ public class Endereco implements Serializable {
 	private List<DadosPessoais> dadosPessoais;
 
 	//bi-directional many-to-one association to Bairro
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name="id_bairro")
 	private Bairro bairro;
 

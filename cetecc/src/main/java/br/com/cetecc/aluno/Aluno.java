@@ -23,74 +23,59 @@ public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_aluno")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_aluno")
 	private long idAluno;
 
-	
 
-	@Column(name="bl_habilidade_informatica")
+	@Column(name = "bl_habilidade_informatica")
 	private byte blHabilidadeInformatica;
 
-	@Column(name="estado_aluno")
+	@Column(name = "estado_aluno")
 	private String estadoAluno;
 
 	private String etnia;
 
-	@Column(name="experiencia_profissional")
+	@Column(name = "experiencia_profissional")
 	private String experienciaProfissional;
 
-	@Column(name="habilidade_manual")
+	@Column(name = "habilidade_manual")
 	private String habilidadeManual;
 
-	@Column(name="problemas_familia")
+	@Column(name = "problemas_familia")
 	private String problemasFamilia;
 
-	//bi-directional many-to-one association to DadosPessoais
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_dados_pessoais")
+	// bi-directional many-to-one association to DadosPessoais
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_dados_pessoais")
 	private DadosPessoais dadosPessoais;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_condicao_fisica")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_condicao_fisica")
 	private CondicaoFisica condicaoFisica;
 
-	//bi-directional many-to-one association to Socioeconomico
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_socioeconomico")
+	// bi-directional many-to-one association to Socioeconomico
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_socioeconomico")
 	private Socioeconomico socioeconomico;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_escolaridade")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_escolaridade")
 	private Escolaridade escolaridade;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(
-		name="aluno_tem_responsavel"
-		, joinColumns={
-			@JoinColumn(name="id_aluno")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_responsavel")
-			}
-		)
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "aluno_tem_responsavel", joinColumns = { @JoinColumn(name = "id_aluno") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_responsavel") })
 	private List<Responsavel> responsaveis;
-	
+
 	@ManyToMany
-	@JoinTable(
-		name="aluno_tem_turma"
-		, joinColumns={
-			@JoinColumn(name="id_aluno")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_turma", referencedColumnName="id_turma")
-			}
-		)
+	@JoinTable(name = "aluno_tem_turma", joinColumns = { @JoinColumn(name = "id_aluno") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_turma", referencedColumnName = "id_turma") })
 	private List<Turma> turmas;
 
 	public Aluno() {
 	}
-	
+
 	public List<Responsavel> getResponsaveis() {
 		return responsaveis;
 	}
@@ -98,25 +83,31 @@ public class Aluno implements Serializable {
 	public void setResponsaveis(List<Responsavel> responsaveis) {
 		this.responsaveis = responsaveis;
 	}
-	
+
 	public CondicaoFisica getCondicaoFisica() {
 		return condicaoFisica;
 	}
+
 	public void setCondicaoFisica(CondicaoFisica condicaoFisica) {
 		this.condicaoFisica = condicaoFisica;
 	}
+
 	public Socioeconomico getSocioeconomico() {
 		return socioeconomico;
 	}
+
 	public void setSocioeconomico(Socioeconomico socioeconomico) {
 		this.socioeconomico = socioeconomico;
 	}
+
 	public Escolaridade getEscolaridade() {
 		return escolaridade;
 	}
+
 	public void setEscolaridade(Escolaridade escolaridade) {
 		this.escolaridade = escolaridade;
 	}
+
 	public long getIdAluno() {
 		return this.idAluno;
 	}
@@ -172,7 +163,8 @@ public class Aluno implements Serializable {
 	public void setProblemasFamilia(String problemasFamilia) {
 		this.problemasFamilia = problemasFamilia;
 	}
-	//@JsonBackReference("dadosPessoais-aluno")
+
+	// @JsonBackReference("dadosPessoais-aluno")
 	public DadosPessoais getDadosPessoais() {
 		return this.dadosPessoais;
 	}

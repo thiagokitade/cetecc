@@ -32,7 +32,7 @@ public class Bairro implements Serializable {
 	private String nome;
 
 	//bi-directional many-to-one association to Cidade
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name="id_cidade")
 	
 	private Cidade cidade;

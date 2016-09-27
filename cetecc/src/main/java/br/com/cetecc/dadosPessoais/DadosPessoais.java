@@ -66,7 +66,7 @@ public class DadosPessoais implements Serializable {
 	private Responsavel responsavel;
 
 	// bi-directional many-to-one association to Endereco
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 

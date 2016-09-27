@@ -26,7 +26,7 @@ public class Disciplina implements Serializable {
 	private String nome;
 
 	//bi-directional many-to-many association to Curso
-	@ManyToMany(mappedBy="disciplinas",cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="disciplinas")
 	private List<Curso> cursos;
 
 	public Disciplina() {

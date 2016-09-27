@@ -3,7 +3,6 @@ package br.com.cetecc.turma;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class Turma implements Serializable {
 	@ManyToMany(mappedBy="turmas")
 	private List<Aluno> alunos;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
